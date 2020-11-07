@@ -54,28 +54,15 @@ const reducer: Reducer<MyState, MyAction> = ( state, action ) => {
   }
 }
 
-console.log( 'criação da store' )
-
 const store = createStore<MyState, MyAction>( reducer, {} )
 
-console.log( 'estado inicial: ', store.getState() )
-
 store.observer( () => {
-  console.log( 'o estado foi alterado' )
+  // Quando o estado atualizar
 } )
-
 store.dispatch( {
   type: 'SIGN_IN_USER',
   email: 'tony.js@zoho.eu',
   password: '123456789'
-} )
-
-console.log( store.getState() )
-
-store.dispatch( { type: 'SIGN_OUT_USER' } )
-
-console.log( store.getState() )
-
-store.dispatch( { type: 'ANOTHER_ACTION' } )
-
-console.log( store.getState() )
+} ) // Atualiza o estado com a action sign in user
+store.dispatch( { type: 'SIGN_OUT_USER' } ) // Atualiza o estado com a action sign out user
+store.dispatch( { type: 'ANOTHER_ACTION' } ) // Não! Atualiza o estado pois action não existe dentro do reducer
