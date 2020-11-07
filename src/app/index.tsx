@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ToggleCaseComponent from '../components/ToggleCaseComponent'
-import ToLowerCaseComponent from '../components/ToLowerCaseComponent'
-import ToUpperCaseComponent from '../components/ToUpperCaseComponent'
 
 const App = () => {
+  const [ show, setShow ] = useState( true )
+  const [ mode, setMode ] = useState<'lower' | 'upper'>( 'lower' )
   return (
     <div>
-      <ToLowerCaseComponent>
-        HELLO WORLD
-      </ToLowerCaseComponent>
-      <ToUpperCaseComponent>
-        hello world
-      </ToUpperCaseComponent>
-      <ToggleCaseComponent initialMode='lower'>
-        Hello World
-      </ToggleCaseComponent>
+      <button onClick={ () => setShow( show => !show ) }>
+        { show ? 'Remover' : 'Inserir' }
+      </button>
+      <button onClick={ () => setMode( mode => mode === 'lower' ? 'upper' : 'lower' ) }>
+        { mode === 'lower' ? 'Converter para upper case' : 'Convert para lower case' }
+      </button>
+      { show && (
+        <ToggleCaseComponent initialMode={mode}>
+          Hello World
+        </ToggleCaseComponent>
+      ) }
     </div>
   )
 }
