@@ -28,6 +28,10 @@ class LifeCycle extends Component<LifeCycleProps, LifeCycleState> {
   componentWillMount() { console.log( 'componentWillMount' ) }
   UNSAFE_componentWillMount() { console.log( 'UNSAFE_componentWillMount' ) }
 
+  /**
+   * Atualiza o estado conforme alteração nos valores das propriedades.
+   * Executado antes mesmo do shouldComponentUpdate
+   */
   // public static getDerivedStateFromProps( props: LifeCycleProps, state: LifeCycleState ): Partial<LifeCycleState> {
   //   console.log( 'getDerivedStateFromProps' )
   //   return { mode: state.mode }
